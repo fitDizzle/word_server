@@ -1,2 +1,1 @@
-web: npm data:import
-web: npm start
+worker: node index.js
