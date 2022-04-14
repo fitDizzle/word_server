@@ -6,7 +6,7 @@ const { host, user, password, database } = config.development;
 const credentials = {
   user: "jlwafmgpcrpzcw",
   host: "ec2-34-207-12-160.compute-1.amazonaws.com",
-  database: "scrabble_words",
+  database: "dd9bjopg329br2",
   password: "f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077",
   uri: "postgres://jlwafmgpcrpzcw:f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077@ec2-34-207-12-160.compute-1.amazonaws.com:5432/dd9bjopg329br2",
   port: 5432,
