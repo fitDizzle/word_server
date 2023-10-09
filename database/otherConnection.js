@@ -4,13 +4,13 @@ const Sequelize = require("sequelize");
 const { host, user, password, database } = config.development;
 
 const credentials = {
-  user: "jlwafmgpcrpzcw",
-  host: "ec2-34-207-12-160.compute-1.amazonaws.com",
-  database: "dd9bjopg329br2",
-  password: "f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077",
-  uri: "postgres://jlwafmgpcrpzcw:f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077@ec2-34-207-12-160.compute-1.amazonaws.com:5432/dd9bjopg329br2",
+  user: "rgunrhgljdfqss",
+  host: "ec2-34-236-103-63.compute-1.amazonaws.com",
+  database: "d75iq9upr8bbj4",
+  password: "8d58565f1ba6ca59807b76d5280654e55a7613d1662922197afcfd4e77e6e206",
+  uri: "postgres://rgunrhgljdfqss:8d58565f1ba6ca59807b76d5280654e55a7613d1662922197afcfd4e77e6e206@ec2-34-236-103-63.compute-1.amazonaws.com:5432/d75iq9upr8bbj4",
   port: 5432,
-  dialectOptions:{
+  dialectOptions: {
     allowPublicKeyRetrieval: true,
     skipSetTimeZone: true,
     ssl: {
