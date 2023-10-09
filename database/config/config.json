@@ -1,13 +1,13 @@
 {
   "development": {
-    "user": "jlwafmgpcrpzcw",
-    "username": "jlwafmgpcrpzcw",
-    "password": "f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077",
-    "database": "dd9bjopg329br2",
-    "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
+    "user": "rgunrhgljdfqss",
+    "username": "rgunrhgljdfqss",
+    "password": "8d58565f1ba6ca59807b76d5280654e55a7613d1662922197afcfd4e77e6e206",
+    "database": "d75iq9upr8bbj4",
+    "host": "ec2-34-236-103-63.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "port":5432,
-    "dialectOptions":{
+    "port": 5432,
+    "dialectOptions": {
       "allowPublicKeyRetrieval": true,
       "skipSetTimeZone": true,
       "ssl": {
@@ -17,14 +17,14 @@
     }
   },
   "test": {
-    "user": "jlwafmgpcrpzcw",
-    "username": "jlwafmgpcrpzcw",
-    "password": "f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077",
-    "database": "dd9bjopg329br2",
-    "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
+    "user": "rgunrhgljdfqss",
+    "username": "rgunrhgljdfqss",
+    "password": "8d58565f1ba6ca59807b76d5280654e55a7613d1662922197afcfd4e77e6e206",
+    "database": "d75iq9upr8bbj4",
+    "host": "ec2-34-236-103-63.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "port":5432,
-    "dialectOptions":{
+    "port": 5432,
+    "dialectOptions": {
       "allowPublicKeyRetrieval": true,
       "skipSetTimeZone": true,
       "ssl": {
@@ -34,14 +34,14 @@
     }
   },
   "production": {
-    "user": "jlwafmgpcrpzcw",
-    "username": "jlwafmgpcrpzcw",
-    "password": "f62a583125324e6eaf2d2e3261c6321549acfab53ab4a5cb01ea7afc0676f077",
-    "database": "dd9bjopg329br2",
-    "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
+    "user": "rgunrhgljdfqss",
+    "username": "rgunrhgljdfqss",
+    "password": "8d58565f1ba6ca59807b76d5280654e55a7613d1662922197afcfd4e77e6e206",
+    "database": "d75iq9upr8bbj4",
+    "host": "ec2-34-236-103-63.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "port":5432,
-    "dialectOptions":{
+    "port": 5432,
+    "dialectOptions": {
       "allowPublicKeyRetrieval": true,
       "skipSetTimeZone": true,
       "ssl": {
