@@ -8,7 +8,7 @@ const credentials = {
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  uri: process.env.DATABASE_URI,
+  uri: process.env.DATABASE_URL,
   port: 5432,
   dialectOptions: {
     allowPublicKeyRetrieval: true,
