@@ -6,22 +6,24 @@ const { Sequelize } = require('sequelize');
 // const sequelize = new Sequelize(process.env.DB_CONNECTION_URL);
 const sequelize = new Sequelize({
   dialect: 'postgres',
-  storage: process.env.DATABASE_URL,
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DATABASE,
   logQueryParameters: true,
   benchmark: true
 });
 
-const modelDefiners = [
-  require('./Word.js'),
-];
+const Word = sequelize.define('Word', {
+  // Define your Word model properties here
+  word: DataTypes.STRING,
+  lower_range: DataTypes.STRING,
+  upper_range: DataTypes.STRING,
+});
 
 // We define all models according to their files.
 for (const modelDefiner of modelDefiners) {
   modelDefiner(sequelize);
 }
 
-// We execute any extra setup after the models are defined, such as adding associations.
-// applyExtraSetup(sequelize);
-
-// We export the sequelize connection instance to be used around our app.
-module.exports = sequelize;
+module.exports = { sequelize, Word };
