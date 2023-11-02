@@ -10,7 +10,7 @@ const credentials = {
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
   uri: process.env.DATABASE_URL,
-  port: 5432,
+  port: process.env.PORT,
   dialectOptions: {
     allowPublicKeyRetrieval: true,
     skipSetTimeZone: true,
