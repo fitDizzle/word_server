@@ -21,5 +21,5 @@ app.get('/', (req, res) => {
 	`);
 });
 
-app.use(routes); s
+app.use(routes);
 app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`));
