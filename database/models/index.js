@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
 });
 
 const modelDefiners = [
-  require('./models/word.js'),
+  require('./Word.js'),
 ];
 
 // We define all models according to their files.
