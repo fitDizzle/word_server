@@ -7,32 +7,11 @@ const cors = require('cors');
 const routes = require('./routes');
 const PORT = process.env.PORT;
 
-const routes = {
-    words: require('./routes/words'),
-};
-
 const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// We create a wrapper to workaround async errors not being transmitted correctly.
-// function makeHandlerAwareOfAsyncErrors(handler) {
-//     return async function (req, res, next) {
-//         try {
-//             await handler(req, res);
-//         } catch (error) {
-//             next(error);
-//         }
-//     };
-// }
-
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// We provide a root route just as an example
 app.get('/', (req, res) => {
     res.send(`
 		<h2>Hello, Sequelize + Express!</h2>
@@ -42,39 +21,5 @@ app.get('/', (req, res) => {
 	`);
 });
 
-// We define the standard REST APIs for each route (if they exist).
-// for (const [routeName, routeController] of Object.entries(routes)) {
-//     if (routeController.getAll) {
-//         app.get(
-//             `/api/${routeName}`,
-//             makeHandlerAwareOfAsyncErrors(routeController.getAll)
-//         );
-//     }
-//     if (routeController.getById) {
-//         app.get(
-//             `/api/${routeName}/:id`,
-//             makeHandlerAwareOfAsyncErrors(routeController.getById)
-//         );
-//     }
-//     if (routeController.create) {
-//         app.post(
-//             `/api/${routeName}`,
-//             makeHandlerAwareOfAsyncErrors(routeController.create)
-//         );
-//     }
-//     if (routeController.update) {
-//         app.put(
-//             `/api/${routeName}/:id`,
-//             makeHandlerAwareOfAsyncErrors(routeController.update)
-//         );
-//     }
-//     if (routeController.remove) {
-//         app.delete(
-//             `/api/${routeName}/:id`,
-//             makeHandlerAwareOfAsyncErrors(routeController.remove)
-//         );
-//     }
-// }
-
-app.use(routes);
+app.use(routes); s
 app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`));
