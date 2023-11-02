@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
+    console.log('server up');
     res.json({ message: 'request received' })
 })
 
