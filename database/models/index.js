@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 // const { applyExtraSetup } = require('./extra-setup');
 
 // In a real app, you should keep the database connection URL as an environment variable.
