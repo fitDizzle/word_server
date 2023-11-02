@@ -24,3 +24,21 @@ module.exports = (sequelize, DataTypes) => {
   );
   return Word;
 };
+
+// We export a function that defines the model.
+// This function will automatically receive as parameter the Sequelize connection object.
+module.exports = (sequelize) => {
+  sequelize.define('word', {
+    // The following specification of the 'id' attribute could be omitted
+    // since it is the default.
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    word: DataTypes.STRING,
+    lower_range: DataTypes.STRING,
+    upper_range: DataTypes.STRING,
+  });
+};
