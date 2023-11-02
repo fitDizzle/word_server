@@ -22,12 +22,12 @@ const importData = async () => {
       let toCreate = await arr.map((word) => {
         return {
           word,
-          // lower_range: lower,
-          // upper_range: upper,
+          lower_range: lower,
+          upper_range: upper,
         };
       });
       await Word.bulkCreate(toCreate, { validate: true });
-
+     
 
       largeIndex += 999;
     };
