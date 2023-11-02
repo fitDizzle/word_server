@@ -7,7 +7,7 @@ require('dotenv');
 const credentials = {
   user: process.env.USER,
   host: process.env.HOST,
-  database: process.env.DATABASE_URL,
+  database: process.env.DATABASE,
   password: process.env.PASSWORD,
   uri: process.env.DATABASE_URL,
   port: process.env.PORT,
