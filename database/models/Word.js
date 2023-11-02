@@ -1,22 +1,26 @@
 "use strict";
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-  sequelize.define('word', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    word: {
-      type: DataTypes.STRING
-    },
-    lower_range: {
-      type: DataTypes.STRING,
-    },
-    upper_range: {
-      type: DataTypes.STRING,
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Word extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
-  });
+  }
+  Word.init(
+    {
+      word: DataTypes.STRING,
+      lower_range: DataTypes.STRING,
+      upper_range: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Word",
+    }
+  );
+  return Word;
 };

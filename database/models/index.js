@@ -1,42 +1,27 @@
-'use strict';
+const { Sequelize } = require('sequelize');
+const { applyExtraSetup } = require('./extra-setup');
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV;
-const config = require(__dirname + '/../config/config.json')[env];
-const db = new Sequelize(
-  process.env.DATABASE_URL,
-  {
-    logging: false,
-    ssl: { rejectUnauthorized: false } //solved the problem with self signed sertificate
-  }
-);
-
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+// In a real app, you should keep the database connection URL as an environment variable.
+// But for this example, we will just use a local SQLite database.
+// const sequelize = new Sequelize(process.env.DB_CONNECTION_URL);
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  storage: process.env.DATABASE_URL,
+  logQueryParameters: true,
+  benchmark: true
 });
 
-db.sequelize = sequelize;
+const modelDefiners = [
+  require('./models/word.js'),
+];
 
-module.exports = db;
+// We define all models according to their files.
+for (const modelDefiner of modelDefiners) {
+  modelDefiner(sequelize);
+}
+
+// We execute any extra setup after the models are defined, such as adding associations.
+applyExtraSetup(sequelize);
+
+// We export the sequelize connection instance to be used around our app.
+module.exports = sequelize;
