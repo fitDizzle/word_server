@@ -2,6 +2,7 @@ const { Pool, Client } = require("pg");
 const config = require("../database/config/config.json");
 const Sequelize = require("sequelize");
 // const { host, user, password, database } = config.development;
+require('dotenv');
 
 const credentials = {
   user: process.env.USER,
