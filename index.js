@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
     res.json({ message: 'request received' })
 })
 
-// require('./database/otherConnection');
-// db.sequelize.sync();
+require('./database/otherConnection');
+db.sequelize.sync();
 
 app.use(routes);
 app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`))
