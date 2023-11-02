@@ -1,13 +1,13 @@
 const { Pool, Client } = require("pg");
 const config = require("../database/config/config.json");
-const Sequelize = require("sequelize");
+const { Sequelize } = require("sequelize");
 // const { host, user, password, database } = config.development;
 require('dotenv');
 
 const credentials = {
   user: process.env.USER,
   host: process.env.HOST,
-  database: process.env.DATABASE,
+  database: process.env.DATABASE_URL,
   password: process.env.PASSWORD,
   uri: process.env.DATABASE_URL,
   port: process.env.PORT,
@@ -51,4 +51,4 @@ async function clientDemo() {
 })();
 
 
-module.exports = credentials
+// module.exports = credentials;
