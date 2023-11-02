@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const cors = require('cors');
-// const routes = require('./routes');
+const routes = require('./routes');
 const PORT = process.env.PORT;
 
 const routes = {
@@ -17,15 +17,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
-function makeHandlerAwareOfAsyncErrors(handler) {
-    return async function (req, res, next) {
-        try {
-            await handler(req, res);
-        } catch (error) {
-            next(error);
-        }
-    };
-}
+// function makeHandlerAwareOfAsyncErrors(handler) {
+//     return async function (req, res, next) {
+//         try {
+//             await handler(req, res);
+//         } catch (error) {
+//             next(error);
+//         }
+//     };
+// }
 
 
 app.use(cors());
@@ -43,48 +43,38 @@ app.get('/', (req, res) => {
 });
 
 // We define the standard REST APIs for each route (if they exist).
-for (const [routeName, routeController] of Object.entries(routes)) {
-    if (routeController.getAll) {
-        app.get(
-            `/api/${routeName}`,
-            makeHandlerAwareOfAsyncErrors(routeController.getAll)
-        );
-    }
-    if (routeController.getById) {
-        app.get(
-            `/api/${routeName}/:id`,
-            makeHandlerAwareOfAsyncErrors(routeController.getById)
-        );
-    }
-    if (routeController.create) {
-        app.post(
-            `/api/${routeName}`,
-            makeHandlerAwareOfAsyncErrors(routeController.create)
-        );
-    }
-    if (routeController.update) {
-        app.put(
-            `/api/${routeName}/:id`,
-            makeHandlerAwareOfAsyncErrors(routeController.update)
-        );
-    }
-    if (routeController.remove) {
-        app.delete(
-            `/api/${routeName}/:id`,
-            makeHandlerAwareOfAsyncErrors(routeController.remove)
-        );
-    }
-}
-
-module.exports = app;
-
-// app.get('/', (req, res) => {
-//     console.log('server up');
-//     res.json({ message: 'request received' })
-// })
-
-// require('./database/otherConnection');
-// db.sequelize.sync();
+// for (const [routeName, routeController] of Object.entries(routes)) {
+//     if (routeController.getAll) {
+//         app.get(
+//             `/api/${routeName}`,
+//             makeHandlerAwareOfAsyncErrors(routeController.getAll)
+//         );
+//     }
+//     if (routeController.getById) {
+//         app.get(
+//             `/api/${routeName}/:id`,
+//             makeHandlerAwareOfAsyncErrors(routeController.getById)
+//         );
+//     }
+//     if (routeController.create) {
+//         app.post(
+//             `/api/${routeName}`,
+//             makeHandlerAwareOfAsyncErrors(routeController.create)
+//         );
+//     }
+//     if (routeController.update) {
+//         app.put(
+//             `/api/${routeName}/:id`,
+//             makeHandlerAwareOfAsyncErrors(routeController.update)
+//         );
+//     }
+//     if (routeController.remove) {
+//         app.delete(
+//             `/api/${routeName}/:id`,
+//             makeHandlerAwareOfAsyncErrors(routeController.remove)
+//         );
+//     }
+// }
 
 app.use(routes);
-app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`))
+app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`));
