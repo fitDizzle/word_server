@@ -1,23 +1,6 @@
 "use strict";
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const { db } = require('./index');
-
-// module.exports = (sequelize, DataTypes) => {
-//   class Word extends Model { }
-
-//   Word.init(
-//     {
-//       word: DataTypes.STRING,
-//       lower_range: DataTypes.STRING,
-//       upper_range: DataTypes.STRING,
-//     },
-//     {
-//       sequelize,
-//       modelName: "Word",
-//     }
-//   );
-//   return Word;
-// };
 
 const Word = db.define('Word', {
   word: {
@@ -35,5 +18,7 @@ const Word = db.define('Word', {
     modelName: "Word",
   }
 );
+
+await Word.sync();
 
 module.exports = { Word };
