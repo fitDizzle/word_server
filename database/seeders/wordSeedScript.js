@@ -1,14 +1,8 @@
 require("dotenv").config();
 const db = require("../models/index");
-// const pool = require("../db");
 
-// import Model here
-const Word = db.Word;
-// import database
-// const connectDB = require("../db");
-// import datafile if needed
+const Word = require('../models/Word');
 const words = require("../../word-list.json");
-
 
 const importData = async () => {
   try {
