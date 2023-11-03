@@ -73,7 +73,7 @@ async function initializeDatabase() {
       }
     };
 
-    importData();
+    // importData();
 
     return db;
   } catch (error) {
