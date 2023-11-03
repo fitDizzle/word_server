@@ -1,7 +1,7 @@
 require("dotenv").config();
 const db = require("../models/index");
 
-const Word = require('../models/Word');
+const Word = db.models.word;
 const words = require("../../word-list.json");
 console.log(words);
 
