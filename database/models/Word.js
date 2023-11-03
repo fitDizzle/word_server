@@ -19,6 +19,11 @@ const Word = db.define('Word', {
   }
 );
 
-await Word.sync();
+try {
+  Word.sync();
+  console.log('Word model successfully created');
+} catch (error) {
+  console.log('Error creating Word model: ', error);
+}
 
 module.exports = { Word };
