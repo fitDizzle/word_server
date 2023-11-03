@@ -1,11 +1,11 @@
 require("dotenv").config();
 const db = require("../models/index");
-const pool = require("../otherConnection");
+// const pool = require("../db");
 
 // import Model here
 const Word = db.Word;
 // import database
-const connectDB = require("../otherConnection");
+// const connectDB = require("../db");
 // import datafile if needed
 const words = require("../../word-list.json");
 
@@ -15,7 +15,6 @@ const importData = async () => {
     let largeIndex = 0;
 
     const mapAndSave = async (arr) => {
-
       let lower = arr[0].slice(0, 2);
       let upper = arr[arr.length - 1].slice(0, 2);
 
@@ -27,7 +26,6 @@ const importData = async () => {
         };
       });
       await Word.bulkCreate(toCreate, { validate: true });
-     
 
       largeIndex += 999;
     };
@@ -44,5 +42,3 @@ const importData = async () => {
 };
 
 importData();
-
-// On package json add a seeder script calling node and the file path

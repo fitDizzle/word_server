@@ -1,16 +1,10 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+
 module.exports = (sequelize, DataTypes) => {
-  class Word extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
+  class Word extends Model { }
+
   Word.init(
     {
       word: DataTypes.STRING,
