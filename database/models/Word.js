@@ -1,6 +1,6 @@
 "use strict";
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const db = new Sequelize(process.env.DATABASE_URL);
+const { db } = require('./index');
 
 // module.exports = (sequelize, DataTypes) => {
 //   class Word extends Model { }
