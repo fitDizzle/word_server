@@ -14,6 +14,7 @@ async function initializeDatabase() {
     });
 
     await db.authenticate();
+    console.log(db.config);
     console.log('Database connection has been established successfully.');
 
     return db;

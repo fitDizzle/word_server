@@ -10,9 +10,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.json({ message: 'WELCOME!!!!' })
-})
+process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD
 
-app.use(routes);
-app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`))
+async function startServer() {
+    const sequelize = await db; // Wait for the promise to resolve
+
+    // The sequelize instance is now available and can be used here
+    // ...
+    app.use(routes);
+    app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`))
+};
+
+startServer();
