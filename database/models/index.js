@@ -17,6 +17,30 @@ async function initializeDatabase() {
     console.log(db.config);
     console.log('Database connection has been established successfully.');
 
+    const Word = db.define('Word', {
+      word: {
+        type: DataTypes.STRING,
+      },
+      lower_range: {
+        type: DataTypes.STRING,
+      },
+      upper_range: {
+        type: DataTypes.STRING,
+      },
+    },
+      {
+        db,
+        modelName: "Word",
+      }
+    );
+
+    try {
+      Word.sync();
+      console.log('Word model successfully created');
+    } catch (error) {
+      console.log('Error creating Word model: ', error);
+    }
+
     return db;
   } catch (error) {
     console.error('Unable to connect to the database:', error);

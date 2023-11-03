@@ -10,8 +10,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD
-
 async function startServer() {
     const sequelize = await db; // Wait for the promise to resolve
 
