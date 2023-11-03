@@ -7,6 +7,7 @@ const db = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PAS
   ssl: { rejectUnauthorized: false }
 });
 
-console.log(db);
+db.authenticate();
+console.log(db.config);
 
 module.exports = { db };
