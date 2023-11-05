@@ -14,7 +14,6 @@ const Word = db.define('Word', {
   },
 },
   {
-    db,
     modelName: "Word",
   }
 );
@@ -26,4 +25,4 @@ try {
   console.log('Error creating Word model: ', error);
 }
 
-module.exports = { Word };
+module.exports = Word;
