@@ -1,5 +1,5 @@
 require("dotenv").config();
-const db = require("../models/index");
+const { db, authenticate_database_connection } = require("../models/index");
 const Word = db.Word;
 const words = require("../../word-list.json");
 
@@ -34,4 +34,11 @@ const importData = async () => {
   }
 };
 
-importData();
+await authenticate_database_connection().then(() => {
+  console.log('Database connection established successfully.');
+  importData();
+})
+  .catch((error) => {
+    console.error('Unable to connect to the database:', error);
+    process.exit(1);
+  });
