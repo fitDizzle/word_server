@@ -11,8 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
-    const sequelize = await db;
-
     app.use(routes);
     app.listen(PORT, () => console.log(`Scrabble Dictionary Server is live on port ${PORT}`))
 };
