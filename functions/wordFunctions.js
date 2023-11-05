@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
-const db = require("../database/models/index");
-const Word = db.Word;
+const Word = require('../models/Word');
 const values = require("../letter-value.json");
 
 const Op = Sequelize.Op;
@@ -17,7 +16,7 @@ module.exports = {
         where: {
           word: {
             [Op.or]: wordArray,
-          }, 
+          },
         },
       });
       if (result.length !== wordArray.length) {
@@ -34,22 +33,22 @@ module.exports = {
             return save ? word : null;
           })
           .filter((word) => word);
-          let stringPlugin = ""
-          let message = ""
+        let stringPlugin = ""
+        let message = ""
         console.log(invalidWords, "invalid");
-        if(invalidWords.length > 1){
+        if (invalidWords.length > 1) {
           stringPlugin = invalidWords
-          .map((word, i, array) => {
-            return i === array.length - 1 ? `& ${word}` : word;
-          })
-          .join(", ");
+            .map((word, i, array) => {
+              return i === array.length - 1 ? `& ${word}` : word;
+            })
+            .join(", ");
           message = `Your words ${stringPlugin} are invalid`
-        
-        }else {
+
+        } else {
           stringPlugin = invalidWords.join("")
           message = `Your word ${stringPlugin} is invalid`
         }
-        
+
 
         return res.status(200).json({
           success: false,

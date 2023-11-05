@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { db, authenticate_database_connection } = require("../models/index");
+const { authenticate_database_connection } = require("../models/index");
 const Word = require('../models/Word');
 const words = require("../../word-list.json");
 
@@ -35,10 +35,11 @@ const importData = async () => {
 };
 
 authenticate_database_connection().then(() => {
-  console.log('Database connection established successfully.');
+  console.log('Beginning word data seed.');
   importData();
+  console.log('Word data seed complete!');
 })
   .catch((error) => {
-    console.error('Unable to connect to the database:', error);
+    console.error('Sorry, we had trouble seeding the words into your database: ', error);
     process.exit(1);
   });
