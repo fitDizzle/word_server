@@ -1,9 +1,6 @@
-//const ThingsTodo = require("../database/models/ThingsTodo");
+const Sequelize = require("sequelize");
 const db = require("../database/models/index");
 const Word = db.Word;
-
-const Sequelize = require("sequelize");
-
 const values = require("../letter-value.json");
 
 const Op = Sequelize.Op;

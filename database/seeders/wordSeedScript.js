@@ -1,39 +1,46 @@
 require("dotenv").config();
 const db = require("../models/index");
-
 const Word = db.models.Word;
 const words = require("../../word-list.json");
-console.log(words);
 
 const importData = async () => {
   try {
-    let largeIndex = 0;
+    const batchSize = 1000;
+    let startIndex = 0;
 
-    const mapAndSave = async (arr) => {
-      let lower = arr[0].slice(0, 2);
-      let upper = arr[arr.length - 1].slice(0, 2);
+    while (startIndex < words.length) {
+      const endIndex = Math.min(startIndex + batchSize, words.length);
+      const batch = words.slice(startIndex, endIndex);
 
-      let toCreate = await arr.map((word) => {
-        return {
-          word,
-          lower_range: lower,
-          upper_range: upper,
-        };
-      });
+      const lower = batch[0].slice(0, 2);
+      const upper = batch[batch.length - 1].slice(0, 2);
+
+      const toCreate = batch.map((word) => ({
+        word,
+        lower_range: lower,
+        upper_range: upper,
+      }));
+
       await Word.bulkCreate(toCreate, { validate: true });
 
-      largeIndex += 999;
-    };
-    do await mapAndSave(words.slice(largeIndex, largeIndex + 1000));
-    while (largeIndex <= words.length);
+      startIndex += batchSize;
+    }
+
     console.log("Success");
     process.exit();
   } catch (error) {
-    // basic error here
-    console.log("error");
-    console.log(error);
+    console.error('Error seeding words into the database: ', error);
     process.exit(1);
   }
 };
 
-importData();
+// Ensure the database connection is properly established before importing
+db.authenticate()
+  .then(() => {
+    console.log('Database connection established successfully.');
+    importData();
+  })
+  .catch((error) => {
+    console.error('Unable to connect to the database:', error);
+    process.exit(1);
+  });
