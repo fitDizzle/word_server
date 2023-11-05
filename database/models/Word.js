@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('./index');
 
-const Word = await db.define('Word', {
+const Word = db.define('Word', {
   word: {
     type: DataTypes.STRING,
   },

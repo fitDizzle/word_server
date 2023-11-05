@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { db, authenticate_database_connection } = require("../models/index");
-const Word = db.Word;
+const Word = require('../models/Word');
 const words = require("../../word-list.json");
 
 const importData = async () => {
