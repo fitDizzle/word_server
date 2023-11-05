@@ -35,7 +35,7 @@ const importData = async () => {
 };
 
 // Ensure the database connection is properly established before importing
-db.authenticate()
+await db
   .then(() => {
     console.log('Database connection established successfully.');
     importData();

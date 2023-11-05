@@ -3,8 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const routes = require('./routes');
-const PORT = process.env.PORT || 3000;
-const db = require('./database/models/index');
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
