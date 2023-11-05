@@ -35,11 +35,10 @@ const importData = async () => {
 };
 
 // Ensure the database connection is properly established before importing
-await db
-  .then(() => {
-    console.log('Database connection established successfully.');
-    importData();
-  })
+db.then(() => {
+  console.log('Database connection established successfully.');
+  importData();
+})
   .catch((error) => {
     console.error('Unable to connect to the database:', error);
     process.exit(1);
