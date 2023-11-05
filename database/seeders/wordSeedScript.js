@@ -34,7 +34,7 @@ const importData = async () => {
   }
 };
 
-await authenticate_database_connection().then(() => {
+authenticate_database_connection().then(() => {
   console.log('Database connection established successfully.');
   importData();
 })
