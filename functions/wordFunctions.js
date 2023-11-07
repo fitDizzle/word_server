@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const Word = require('../models/Word');
+const Word = require('../database/models/Word');
 const values = require("../letter-value.json");
 
 const Op = Sequelize.Op;
@@ -33,9 +33,10 @@ module.exports = {
             return save ? word : null;
           })
           .filter((word) => word);
+
         let stringPlugin = ""
         let message = ""
-        console.log(invalidWords, "invalid");
+
         if (invalidWords.length > 1) {
           stringPlugin = invalidWords
             .map((word, i, array) => {
@@ -70,7 +71,9 @@ module.exports = {
             return values[letter];
           }
         });
+
         let reducedValues = vals.reduce((a, b) => a + b, 0);
+        
         wordMultipliers.forEach((mult) => {
           if (mult === "2,word") {
             reducedValues *= 2;

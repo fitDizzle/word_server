@@ -20,7 +20,6 @@ module.exports = {
       });
 
       words = words.map((x) => x.word).filter((word) => !word.includes(otherChars));
-      console.log(words, 'FOUND WORDS')
 
       return res.status(200).json({
         success: true,
